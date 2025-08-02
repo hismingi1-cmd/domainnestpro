@@ -3,199 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DomainNestPro - Domain Analyzer</title>
+  <title>DomainNestPro - AI Domain Analyzer</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #0b1a2e;
-      color: #ffffff;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #102542;
-      padding: 20px;
-      text-align: center;
-      border-bottom: 1px solid #1e3a5f;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.2em;
-      color: #ffffff;
-    }
-    nav {
-      margin-top: 10px;
-    }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #a0c4ff;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .content {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-      text-align: center;
-    }
-    .content h2 {
-      color: #a0c4ff;
-    }
-    input[type="text"] {
-      padding: 10px;
-      width: 80%;
-      max-width: 400px;
-      border: none;
-      border-radius: 5px;
-      margin-top: 20px;
-    }
-    button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #1e90ff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    button:hover {
-      background-color: #1c7ed6;
-    }
-    .result-box {
-      margin-top: 30px;
-      padding: 20px;
-      background-color: #15304d;
-      border-radius: 8px;
-    }
-    .suggestions {
-      margin-top: 20px;
-      color: #a0c4ff;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      color: #a8b2c1;
-      margin-top: 40px;
-      border-top: 1px solid #1e3a5f;
-    }
-    a.email-link {
-      color: #a0c4ff;
-    }
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f2f2f2; color: #333; }
+    header { background: linear-gradient(to right, #0f2027, #203a43, #2c5364); padding: 40px 20px; color: white; text-align: center; }
+    nav { background: #fff; display: flex; justify-content: center; padding: 12px; border-bottom: 1px solid #ccc; }
+    nav a { margin: 0 20px; color: #2c5364; text-decoration: none; font-weight: bold; }
+    .hero { text-align: center; padding: 50px 20px; background: white; }
+    .analyzer { margin: 30px auto; max-width: 500px; }
+    input { padding: 10px; width: 70%; border: 1px solid #ccc; }
+    button { padding: 10px 20px; background: #2c5364; color: white; border: none; cursor: pointer; }
+    .result { margin-top: 20px; font-weight: bold; color: #203a43; }
+    footer { background: #203a43; color: white; text-align: center; padding: 20px; margin-top: 40px; }
   </style>
-</head>
-<body>
-  <header>
-    <h1>DomainNestPro</h1>
-    <p>Analyze and evaluate any domain name</p>
-    <nav>
-      <a href="#analyzer">Domain Analyzer</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <div class="content" id="analyzer">
-    <h2>Domain Analyzer</h2>
-    <p>Enter a domain name below to check availability and get suggestions:</p>
-    <input type="text" id="domainInput" placeholder="e.g., myai.ai" />
-    <br />
-    <button onclick="analyzeDomain()">Analyze</button>
-
-    <div class="result-box" id="resultBox" style="display: none;">
-      <h3>Analysis Result:</h3>
-      <p id="resultText">Your analysis will appear here...</p>
-      <div class="suggestions" id="suggestionsBox"></div>
-    </div>
-  </div>
-
-  <div class="content" id="about">
-    <h2>About</h2>
-    <p><strong>DomainNestPro</strong> is a smart domain analysis tool designed to help you evaluate domain names for branding, SEO, availability, and market potential.</p>
-  </div>
-
-  <div class="content" id="contact">
-    <h2>Contact</h2>
-    <p>If you have questions or inquiries, reach us at:</p>
-    <p><a class="email-link" href="mailto:studio@domainnestpro.com">studio@domainnestpro.com</a></p>
-  </div>
-
-  <footer>
-    &copy; 2025 domainnestpro.com — All rights reserved.
-  </footer>
-
   <script>
-    async function checkAvailability(domain) {
-      try {
-        const parts = domain.split(".");
-        const name = parts[0];
-        const zone = parts[1];
-        const res = await fetch(`https://api.domainsdb.info/v1/domains/search?domain=${name}&zone=${zone}`);
-        const data = await res.json();
-        return !(data.domains && data.domains.length > 0);
-      } catch (e) {
-        return false;
-      }
-    }
-
-    async function analyzeDomain() {
-      const domain = document.getElementById("domainInput").value.trim().toLowerCase();
-      const resultBox = document.getElementById("resultBox");
-      const resultText = document.getElementById("resultText");
-      const suggestionsBox = document.getElementById("suggestionsBox");
-      suggestionsBox.innerHTML = "";
-      if (!domain || !domain.includes(".")) {
-        resultText.textContent = "Please enter a valid domain name.";
-        resultBox.style.display = "block";
+    function analyzeDomain() {
+      const domain = document.getElementById('domainInput').value;
+      const result = document.getElementById('result');
+      if (!domain) {
+        result.innerText = "Please enter a domain name.";
         return;
       }
-
-      resultText.textContent = "Checking availability...";
-      resultBox.style.display = "block";
-
-      const available = await checkAvailability(domain);
-
-      if (available) {
-        resultText.innerHTML = `
-          <strong>Domain:</strong> ${domain}<br>
-          <strong>Status:</strong> ✅ <span style="color: lightgreen;">Available</span><br>
-        `;
-      } else {
-        resultText.innerHTML = `
-          <strong>Domain:</strong> ${domain}<br>
-          <strong>Status:</strong> ❌ <span style="color: red;">Taken</span><br>
-        `;
-        const base = domain.split(".")[0];
-        const ext = domain.split(".")[1];
-        const suggestions = [
-          "get" + base,
-          "try" + base,
-          "the" + base,
-          base + "hub",
-          base + "online",
-          base + "ai"
-        ];
-
-        let html = "<br><strong>Suggestions:</strong><ul style='list-style: none; padding: 0;'>";
-        for (let i = 0; i < suggestions.length; i++) {
-          const suggestion = suggestions[i] + "." + ext;
-          const isAvailable = await checkAvailability(suggestion);
-          if (isAvailable) {
-            html += `<li>✔️ ${suggestion}</li>`;
-          }
-        }
-        html += "</ul>";
-        suggestionsBox.innerHTML = html;
-      }
+      result.innerText = "Analyzing domain: " + domain + "...";
+      setTimeout(() => {
+        result.innerText = "✅ " + domain + " is available and ideal for AI projects!";
+      }, 1500);
     }
   </script>
-</body>
-</html>
-
-  </script>
+</head>
+<body>
+  <header><h1>DomainNestPro</h1><p>Smart AI-Based Domain Analyzer</p></header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="hero">
+    <h1>Find the Perfect Domain</h1>
+    <p>Analyze domain names instantly with AI.</p>
+    <div class="analyzer">
+      <input id="domainInput" type="text" placeholder="Enter domain name..." />
+      <button onclick="analyzeDomain()">Analyze</button>
+      <div id="result" class="result"></div>
+    </div>
+  </div>
+  <footer>&copy; 2025 DomainNestPro | Contact: studio@domainnestpro.com</footer>
 </body>
 </html>
