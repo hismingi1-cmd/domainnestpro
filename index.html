@@ -3,50 +3,157 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DomainNestPro - AI Domain Analyzer</title>
+  <title>DomainNestPro — AI Domain Analyzer</title>
   <style>
-    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f2f2f2; color: #333; }
-    header { background: linear-gradient(to right, #0f2027, #203a43, #2c5364); padding: 40px 20px; color: white; text-align: center; }
-    nav { background: #fff; display: flex; justify-content: center; padding: 12px; border-bottom: 1px solid #ccc; }
-    nav a { margin: 0 20px; color: #2c5364; text-decoration: none; font-weight: bold; }
-    .hero { text-align: center; padding: 50px 20px; background: white; }
-    .analyzer { margin: 30px auto; max-width: 500px; }
-    input { padding: 10px; width: 70%; border: 1px solid #ccc; }
-    button { padding: 10px 20px; background: #2c5364; color: white; border: none; cursor: pointer; }
-    .result { margin-top: 20px; font-weight: bold; color: #203a43; }
-    footer { background: #203a43; color: white; text-align: center; padding: 20px; margin-top: 40px; }
-  </style>
-  <script>
-    function analyzeDomain() {
-      const domain = document.getElementById('domainInput').value;
-      const result = document.getElementById('result');
-      if (!domain) {
-        result.innerText = "Please enter a domain name.";
-        return;
-      }
-      result.innerText = "Analyzing domain: " + domain + "...";
-      setTimeout(() => {
-        result.innerText = "✅ " + domain + " is available and ideal for AI projects!";
-      }, 1500);
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
     }
-  </script>
+
+    header {
+      padding: 60px 20px;
+      text-align: center;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #cfd8dc;
+    }
+
+    nav {
+      background-color: #111;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .analyzer-section {
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .analyzer-section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .analyzer-form input {
+      width: 80%;
+      padding: 15px;
+      font-size: 16px;
+      border-radius: 5px 0 0 5px;
+      border: none;
+      outline: none;
+    }
+
+    .analyzer-form button {
+      padding: 15px 25px;
+      font-size: 16px;
+      background-color: #00bcd4;
+      color: #fff;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+
+    .analyzer-form button:hover {
+      background-color: #0097a7;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-size: 1.1em;
+      color: #80cbc4;
+    }
+
+    footer {
+      margin-top: 80px;
+      background-color: #101010;
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9em;
+      color: #999;
+    }
+  </style>
 </head>
 <body>
-  <header><h1>DomainNestPro</h1><p>Smart AI-Based Domain Analyzer</p></header>
+
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
-  <div class="hero">
-    <h1>Find the Perfect Domain</h1>
-    <p>Analyze domain names instantly with AI.</p>
-    <div class="analyzer">
-      <input id="domainInput" type="text" placeholder="Enter domain name..." />
-      <button onclick="analyzeDomain()">Analyze</button>
-      <div id="result" class="result"></div>
-    </div>
-  </div>
+
+  <header>
+    <h1>DomainNestPro</h1>
+    <p>Smart AI-powered Domain Analysis Tool</p>
+  </header>
+
+  <section class="analyzer-section">
+    <h2>Analyze a Domain Name</h2>
+    <form class="analyzer-form" onsubmit="analyzeDomain(event)">
+      <input type="text" id="domainInput" placeholder="Enter a domain (e.g. example.ai)" required />
+      <button type="submit">Analyze</button>
+    </form>
+    <div class="result" id="resultBox"></div>
+  </section>
+
+  <footer>
+    &copy; 2025 DomainNestPro — Powered by AI | Contact: studio@domainnestpro.com
+  </footer>
+
+  <script>
+    function analyzeDomain(event) {
+      event.preventDefault();
+      const domain = document.getElementById("domainInput").value.trim().toLowerCase();
+      const resultBox = document.getElementById("resultBox");
+
+      if (!domain.includes(".")) {
+        resultBox.innerText = "❌ Please enter a valid domain (e.g. yourdomain.ai)";
+        return;
+      }
+
+      // Mocked AI-based analysis (you can later connect this with real API)
+      const score = Math.floor(Math.random() * 100) + 1;
+      const verdict = score > 80
+        ? "🔥 Excellent AI domain!"
+        : score > 60
+        ? "✅ Good potential domain."
+        : score > 40
+        ? "⚠️ Fair, might need improvement."
+        : "❌ Weak domain. Try another one.";
+
+      resultBox.innerHTML = `
+        <strong>Domain:</strong> ${domain}<br/>
+        <strong>Score:</strong> ${score}/100<br/>
+        <strong>Verdict:</strong> ${verdict}
+      `;
+    }
+  </script>
+
+</body>
+</html>
   <footer>&copy; 2025 DomainNestPro | Contact: studio@domainnestpro.com</footer>
 </body>
 </html>
