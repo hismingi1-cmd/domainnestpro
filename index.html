@@ -55,11 +55,19 @@
 
     .analyzer-section h2 {
       font-size: 2em;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+    }
+
+    .analyzer-section p {
+      color: #ccc;
+    }
+
+    .analyzer-form {
+      margin-top: 20px;
     }
 
     .analyzer-form input {
-      width: 80%;
+      width: 70%;
       padding: 15px;
       font-size: 16px;
       border-radius: 5px 0 0 5px;
@@ -70,7 +78,7 @@
     .analyzer-form button {
       padding: 15px 25px;
       font-size: 16px;
-      background-color: #00bcd4;
+      background-color: #2196f3;
       color: #fff;
       border: none;
       border-radius: 0 5px 5px 0;
@@ -78,13 +86,17 @@
     }
 
     .analyzer-form button:hover {
-      background-color: #0097a7;
+      background-color: #1976d2;
     }
 
     .result {
       margin-top: 30px;
-      font-size: 1.1em;
-      color: #80cbc4;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #1c1c1c;
+      color: #cfd8dc;
+      font-size: 1rem;
+      text-align: left;
     }
 
     footer {
@@ -107,20 +119,23 @@
 
   <header>
     <h1>DomainNestPro</h1>
-    <p>Smart AI-powered Domain Analysis Tool</p>
+    <p>AI-powered Domain Analyzer & Insights</p>
   </header>
 
-  <section class="analyzer-section">
-    <h2>Analyze a Domain Name</h2>
+  <section class="analyzer-section" id="domain-analyzer">
+    <h2>Domain Analysis</h2>
+    <p>Enter a domain to get a smart AI-based evaluation</p>
+
     <form class="analyzer-form" onsubmit="analyzeDomain(event)">
-      <input type="text" id="domainInput" placeholder="Enter a domain (e.g. example.ai)" required />
+      <input type="text" id="domainInput" placeholder="e.g. futureai.io" required />
       <button type="submit">Analyze</button>
     </form>
+
     <div class="result" id="resultBox"></div>
   </section>
 
   <footer>
-    &copy; 2025 DomainNestPro — Powered by AI | Contact: studio@domainnestpro.com
+    &copy; 2025 DomainNestPro — Powered by AI | Contact: <a href="mailto:studio@domainnestpro.com" style="color:#2196f3">studio@domainnestpro.com</a>
   </footer>
 
   <script>
@@ -130,30 +145,30 @@
       const resultBox = document.getElementById("resultBox");
 
       if (!domain.includes(".")) {
-        resultBox.innerText = "❌ Please enter a valid domain (e.g. yourdomain.ai)";
+        resultBox.innerHTML = "<strong>❌ Invalid domain format.</strong>";
         return;
       }
 
-      // Mocked AI-based analysis (you can later connect this with real API)
+      const tld = domain.split('.').pop();
       const score = Math.floor(Math.random() * 100) + 1;
-      const verdict = score > 80
-        ? "🔥 Excellent AI domain!"
-        : score > 60
-        ? "✅ Good potential domain."
-        : score > 40
-        ? "⚠️ Fair, might need improvement."
-        : "❌ Weak domain. Try another one.";
+      const verdict =
+        score > 80 ? "🔥 Excellent AI domain with high brand potential."
+        : score > 60 ? "✅ Good domain, has market potential."
+        : score > 40 ? "⚠️ Average value. Try optimizing name or extension."
+        : "❌ Low value domain. Consider alternatives.";
+
+      const tldNote = (tld === "ai") 
+        ? "✅ .ai is popular for AI startups — good choice!" 
+        : ℹ️ .${tld} is not as strong as .ai or .com in the current AI space.;
 
       resultBox.innerHTML = `
         <strong>Domain:</strong> ${domain}<br/>
         <strong>Score:</strong> ${score}/100<br/>
-        <strong>Verdict:</strong> ${verdict}
+        <strong>AI Verdict:</strong> ${verdict}<br/>
+        <strong>Extension Insight:</strong> ${tldNote}
       `;
     }
   </script>
 
-</body>
-</html>
-  <footer>&copy; 2025 DomainNestPro | Contact: studio@domainnestpro.com</footer>
 </body>
 </html>
