@@ -3,328 +3,214 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DomainNestPro — AI Domain Analyzer</title>
+  <title>DomainNestPro – AI Domain Tools</title>
   <style>
     body {
       margin: 0;
+      background-color: #0d1a2d;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #0a0a0a;
-      color: #ffffff;
+      color: #fff;
+      scroll-behavior: smooth;
     }
-
-    header {
-      padding: 60px 20px;
+    header, footer {
+      background: #08121f;
       text-align: center;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      padding: 20px;
     }
-
     header h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
+      color: #4fc3f7;
     }
-
-    header p {
-      font-size: 1.2em;
-      color: #cfd8dc;
-    }
-
     nav {
-      background-color: #111;
+      background: #0a172a;
       display: flex;
       justify-content: center;
-      padding: 10px 0;
+      gap: 30px;
+      padding: 15px 0;
     }
-
     nav a {
-      color: #ffffff;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .analyzer-section {
-      max-width: 600px;
-      margin: 60px auto;
-      padding: 0 20px;
-      text-align: center;
-    }
-
-    .analyzer-section h2 {
-      font-size: 2em;
-      margin-bottom: 10px;
-    }
-
-    .analyzer-section p {
-      color: #ccc;
-    }
-
-    .analyzer-form {
-      margin-top: 20px;
-    }
-
-    .analyzer-form input {
-      width: 70%;
-      padding: 15px;
-      font-size: 16px;
-      border-radius: 5px 0 0 5px;
-      border: none;
-      outline: none;
-    }
-
-    .analyzer-form button {
-      padding: 15px 25px;
-      font-size: 16px;
-      background-color: #2196f3;
-      color: #fff;
-      border: none;
-      border-radius: 0 5px 5px 0;
-      cursor: pointer;
-    }
-
-    .analyzer-form button:hover {
-      background-color: #1976d2;
-    }
-
-    .result {
-      margin-top: 30px;
-      padding: 20px;
-      border-radius: 8px;
-      background-color: #1c1c1c;
-      color: #cfd8dc;
-      font-size: 1rem;
-      text-align: left;
-    }
-
-    footer {
-      margin-top: 80px;
-      background-color: #101010;
-      text-align: center;
-      padding: 30px;
-      font-size: 0.9em;
-      color: #999;
-    }
-  </style>
-</head>
-<body>
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <header>
-    <h1>DomainNestPro</h1>
-    <p>AI-powered Domain Analyzer & Insights</p>
-  </header>
-
-  <section class="analyzer-section" id="domain-analyzer">
-    <h2>Domain Analysis</h2>
-    <p>Enter a domain to get a smart AI-based evaluation</p>
-
-    <form class="analyzer-form" onsubmit="analyzeDomain(event)">
-      <input type="text" id="domainInput" placeholder="e.g. futureai.io" required />
-      <button type="submit">Analyze</button>
-    </form>
-
-    <div class="result" id="resultBox"></div>
-  </section>
-
-  <footer>
-    &copy; 2025 DomainNestPro — Powered by AI | Contact: <a href="mailto:studio@domainnestpro.com" style="color:#2196f3">studio@domainnestpro.com</a>
-  </footer>
-
-  <script>
-    function analyzeDomain(event) {
-      event.preventDefault();
-      const domain = document.getElementById("domainInput").value.trim().toLowerCase();
-      const resultBox = document.getElementById("resultBox");
-
-      if (!domain.includes(".")) {
-        resultBox.innerHTML = "<strong>❌ Invalid domain format.</strong>";
-        return;
-      }
-
-      const tld = domain.split('.').pop();
-      const score = Math.floor(Math.random() * 100) + 1;
-      const verdict =
-        score > 80 ? "🔥 Excellent AI domain with high brand potential."
-        : score > 60 ? "✅ Good domain, has market potential."
-        : score > 40 ? "⚠️ Average value. Try optimizing name or extension."
-        : "❌ Low value domain. Consider alternatives.";
-
-      const tldNote = (tld === "ai") 
-        ? "✅ .ai is popular for AI startups — good choice!" 
-        : ℹ️ .${tld} is not as strong as .ai or .com in the current AI space.;
-
-      resultBox.innerHTML = `
-        <strong>Domain:</strong> ${domain}<br/>
-        <strong>Score:</strong> ${score}/100<br/>
-        <strong>AI Verdict:</strong> ${verdict}<br/>
-        <strong>Extension Insight:</strong> ${tldNote}
-      `;
-    }
-  </script>
-
-</body>
-</html>
-9:17 ص
-Radjai
-apiKey = WzXy123YOURAPIKEYHERE
-Radjai
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DomainNestPro – Smart Domain Analyzer</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0d1a2d;
-      color: #fff;
-    }
-    header {
-      background: #0a1322;
-      padding: 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
       color: #4fc3f7;
+      text-decoration: none;
+      font-weight: bold;
     }
-    .analyzer-section {
-      padding: 60px 20px;
-      text-align: center;
-      max-width: 700px;
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
       margin: auto;
     }
-    .analyzer-form input {
-      padding: 10px;
-      width: 70%;
-      max-width: 400px;
-      border: none;
-      border-radius: 4px;
-      margin-bottom: 10px;
-    }
-    .analyzer-form button {
-      padding: 10px 20px;
-      border: none;
-      background-color: #4fc3f7;
-      color: #000;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .result {
-      margin-top: 30px;
-      background: #111e33;
-      padding: 20px;
-      border-radius: 5px;
-      text-align: left;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      background-color: #08121f;
-      color: #ccc;
-    }
-    .highlight {
+    h2 {
       color: #4fc3f7;
     }
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    input {
+      width: 70%;
+    }
+    button {
+      background: #4fc3f7;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .box {
+      background: #111e33;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    ul { list-style: none; padding: 0; }
+    .plans { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+    .plan {
+      background: #0a172a;
+      padding: 20px;
+      border-radius: 10px;
+      width: 250px;
+      text-align: center;
+    }
+    .plan h3 { color: #4fc3f7; }
+    .suggestions, .result { margin-top: 10px; background: #08121f; padding: 10px; border-radius: 5px; }
+    footer p { color: #aaa; }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>DomainNestPro</h1>
-    <p>Analyze and Discover Valuable Domains Instantly</p>
-  </header>
+<header>
+  <h1>DomainNestPro</h1>
+  <p>Your smart AI tool for domain analysis</p>
+</header>
 
-  <section class="analyzer-section" id="domain-analyzer">
-    <h2>🔎 Domain Analyzer</h2>
-    <p>Enter a domain name below to view registration details & suggestions:</p>
+<nav>
+  <a href="#analyze">Analyze</a>
+  <a href="#tools">Tools</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#auth">Login/Register</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-    <form class="analyzer-form" onsubmit="analyzeDomain(event)">
-      <input type="text" id="domainInput" placeholder="e.g. youraiidea.com" required />
-      <button type="submit">Analyze</button>
-    </form>
+<section id="analyze">
+  <h2>🔍 Domain Analyzer</h2>
+  <input type="text" id="domainInput" placeholder="e.g. smartai.io" />
+  <button onclick="analyzeDomain()">Analyze</button>
+  <div id="resultBox" class="result"></div>
+  <div id="suggestionsBox" class="suggestions"></div>
+</section>
 
-    <div class="result" id="resultBox"></div>
-  </section>
+<section id="tools">
+  <h2>🛠️ Tools</h2>
+  <div class="box">
+    <p>Advanced domain scoring, availability check, AI suggestions, and more. Accessible after login.</p>
+  </div>
+</section>
 
-  <footer>
-    &copy; 2025 DomainNestPro – All rights reserved | Contact: <a href="mailto:studio@domainnestpro.com" style="color:#4fc3f7;">studio@domainnestpro.com</a>
-  </footer>
+<section id="pricing">
+  <h2>💳 Pricing</h2>
+  <div class="plans">
+    <div class="plan">
+      <h3>Free</h3>
+      <p>$0/month</p>
+      <ul>
+        <li>3 lookups/day</li>
+        <li>Basic insights</li>
+      </ul>
+    </div>
+    <div class="plan">
+      <h3>Pro</h3>
+      <p>$9/month</p>
+      <ul>
+        <li>30 lookups/day</li>
+        <li>AI suggestions</li>
+      </ul>
+    </div>
+    <div class="plan">
+      <h3>Business</h3>
+      <p>$29/month</p>
+      <ul>
+        <li>Unlimited use</li>
+        <li>Premium support</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  <script>
-    const apiKey = "at_o0chisVOdtY0mMUUdbNKca0xbyebP";
+<section id="auth">
+  <h2>🔐 Register / Login</h2>
+  <div class="box">
+    <input type="email" id="email" placeholder="Email"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <button onclick="register()">Register</button>
+    <button onclick="login()">Login</button>
+  </div>
+</section>
 
-    async function analyzeDomain(event) {
-      event.preventDefault();
-      const domain = document.getElementById("domainInput").value.trim().toLowerCase();
-      const resultBox = document.getElementById("resultBox");
-      resultBox.innerHTML = "⏳ Fetching WHOIS data...";
+<section id="contact">
+  <h2>📩 Contact</h2>
+  <div class="box">
+    <p>Email us: <a href="mailto:studio@domainnestpro.com" style="color:#4fc3f7;">studio@domainnestpro.com</a></p>
+  </div>
+</section>
 
-      if (!domain.includes(".")) {
-        resultBox.innerHTML = "<strong>❌ Invalid domain format.</strong>";
-        return;
-      }
+<footer>
+  <p>&copy; 2025 DomainNestPro – All rights reserved</p>
+</footer>
 
-      const apiUrl = https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${domain}&outputFormat=JSON;
+<script>
+const apiKey = "at_o0chisVOdtY0mMUUdbNKca0xbyebP";
 
-      try {
-        const res = await fetch(apiUrl);
-        const data = await res.json();
+function analyzeDomain() {
+  const domain = document.getElementById("domainInput").value.trim();
+  const resultBox = document.getElementById("resultBox");
+  const suggestionsBox = document.getElementById("suggestionsBox");
+  if (!domain.includes(".")) {
+    resultBox.innerHTML = "❌ Invalid domain format.";
+    return;
+  }
+  resultBox.innerHTML = "Fetching data...";
+  suggestionsBox.innerHTML = "";
+  fetch(`https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${domain}&outputFormat=JSON`)
+    .then(res => res.json())
+    .then(data => {
+      const d = data.WhoisRecord || {};
+      resultBox.innerHTML = \`
+        <strong>Domain:</strong> \${domain}<br/>
+        <strong>Registrar:</strong> \${d.registrarName || "N/A"}<br/>
+        <strong>Created:</strong> \${d.createdDate || "N/A"}<br/>
+        <strong>Updated:</strong> \${d.updatedDate || "N/A"}<br/>
+        <strong>Expires:</strong> \${d.expiresDate || "N/A"}<br/>
+        <strong>Score:</strong> \${100 - domain.length + (domain.includes("-") ? -10 : 0)}/100
+      \`;
+      const base = domain.split(".")[0].replace(/[^a-zA-Z0-9]/g, "");
+      suggestionsBox.innerHTML = "<strong>Suggestions:</strong><br>" + [
+        base+"ai.com", "get"+base+".io", base+"labs.com"
+      ].join("<br>");
+    }).catch(err => {
+      resultBox.innerHTML = "❌ Error fetching data.";
+      console.error(err);
+    });
+}
 
-        if (data.WhoisRecord) {
-          const { createdDate, updatedDate, expiresDate, registrarName } = data.WhoisRecord;
+function register() {
+  const email = document.getElementById("email").value;
+  const pass = document.getElementById("password").value;
+  if (email && pass) {
+    localStorage.setItem("user", JSON.stringify({ email, pass }));
+    alert("Registered successfully.");
+  }
+}
 
-          // تحليل تقييم افتراضي بناءً على عمر النطاق
-          let score = "Good";
-          const age = new Date().getFullYear() - new Date(createdDate).getFullYear();
-          if (age >= 5) score = "⭐ Established";
-          else if (age <= 1) score = "🆕 New";
-          else score = "✅ Mid-age";
+function login() {
+  const email = document.getElementById("email").value;
+  const pass = document.getElementById("password").value;
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (user && user.email === email && user.pass === pass) {
+    alert("Login successful!");
+  } else {
+    alert("Invalid credentials.");
+  }
+}
+</script>
 
-          // اقتراح اسماء شبيهة
-          const suggestions = suggestAlternatives(domain);
-
-          resultBox.innerHTML = `
-            <strong>Domain:</strong> <span class="highlight">${domain}</span><br/>
-            <strong>Registrar:</strong> ${registrarName || "N/A"}<br/>
-            <strong>Created:</strong> ${createdDate || "N/A"}<br/>
-            <strong>Updated:</strong> ${updatedDate || "N/A"}<br/>
-            <strong>Expires:</strong> ${expiresDate || "N/A"}<br/>
-            <strong>Status:</strong> ${score}<br/><br/>
-            <strong>🔁 Suggestions:</strong><br/>
-            ${suggestions.map(d => • ${d}).join("<br/>")}
-          `;
-        } else {
-          resultBox.innerHTML = "❌ No WHOIS record found.";
-        }
-
-      } catch (err) {
-        console.error(err);
-        resultBox.innerHTML = "❌ Failed to retrieve data. Try again later.";
-      }
-    }
-
-    function suggestAlternatives(domain) {
-      const name = domain.split(".")[0];
-      return [
-        ${name}ai.com,
-        get${name}.ai,
-        ${name}-hub.com,
-        ${name}genius.io,
-        ${name}bot.net
-      ];
-    }
-  </script>
 </body>
 </html>
